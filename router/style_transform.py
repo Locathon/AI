@@ -7,6 +7,7 @@ router = APIRouter()
 @router.post("/style-transform", response_model=StyleTransformResponse)
 def transform_style(request: StyleTransformRequest):
     try:
+        print(request)
         transformed = convert_style(request.original_text, request.tone)
         return StyleTransformResponse(original=request.original_text, transformed=transformed)
     except Exception as e:
